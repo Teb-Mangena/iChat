@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import { clerkMiddleware } from "@clerk/express";
 
 import { ENV } from "./config/env.js";
 import { connectDb } from "./config/db.js";
@@ -10,6 +11,7 @@ const { PORT } = ENV;
 
 app.use(cors());
 app.use(express.json());
+app.use(clerkMiddleware());
 app.use(morgan("dev"));
 
 // check health
