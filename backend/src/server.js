@@ -6,6 +6,8 @@ import { clerkMiddleware } from "@clerk/express";
 import { ENV } from "./config/env.js";
 import { connectDb } from "./config/db.js";
 
+import authRoutes from "./routes/auth.route.js";
+
 const app = express();
 const { PORT } = ENV;
 
@@ -22,6 +24,7 @@ app.get("/health", (req, res) => {
 });
 
 // API ROUTES
+app.use("/api/auth", authRoutes);
 
 // Connect DB then start the server
 startServer();
