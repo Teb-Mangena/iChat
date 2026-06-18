@@ -8,6 +8,7 @@ export const ENV = {
   UPSTASH_REDIS_REST_URL: process.env.UPSTASH_REDIS_REST_URL,
   CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
   CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
+  CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
 };
 
 const requiredKeys = [
@@ -16,6 +17,7 @@ const requiredKeys = [
   "UPSTASH_REDIS_REST_URL",
   "CLERK_SECRET_KEY",
   "CLERK_PUBLISHABLE_KEY",
+  "CLERK_WEBHOOK_SIGNING_SECRET",
 ];
 
 for (const key of requiredKeys) {

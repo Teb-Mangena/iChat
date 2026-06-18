@@ -3,19 +3,26 @@ import cors from "cors";
 import morgan from "morgan";
 import fs from "fs";
 import path from "path";
-
 import { clerkMiddleware } from "@clerk/express";
 
 import { ENV } from "./config/env.js";
 import { connectDb } from "./config/db.js";
 
-import authRoutes from "./routes/auth.route.js";
 import job from "./lib/cron.js";
+import clerkWebhook from "./webhooks/clerk.webhook.js";
+import authRoutes from "./routes/auth.route.js";
 
 const app = express();
 const { PORT, FRONTEND_URL, NODE_ENV } = ENV;
 
 const publicDir = path.join(process.cwd(), "public");
+
+// it's important that you don't parse the webhook event data, it should be in the raw format
+app.use(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhook,
+);
 
 app.use(express.json());
 app.use(
