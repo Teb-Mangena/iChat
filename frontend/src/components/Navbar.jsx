@@ -31,7 +31,7 @@ export default function Navbar() {
               color="primary"
               variant="flat"
             >
-              Sign In
+              Sign Ins
             </Button>
           </Show>
         </div>
