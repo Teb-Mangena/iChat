@@ -1,8 +1,12 @@
-import { Routes, Route } from "react-router"
+import { Routes, Route, Navigate } from "react-router"
 import AuthPage from "./pages/AuthPage"
 import HomePage from "./pages/HomePage"
+import { useAuth } from "@clerk/react"
 
 function App() {
+  const { isLoaded, isSignedIn } = useAuth();
+
+  if (!isLoaded) return <p>Loading...</p>
 
   return (
     <div>
@@ -10,11 +14,11 @@ function App() {
       <Routes>
         <Route
           index
-          element={<HomePage />}
+          element={isSignedIn ? <HomePage /> : <Navigate to='/auth' replace />}
         />
         <Route
           path="/auth"
-          element={<AuthPage />}
+          element={!isSignedIn ? <AuthPage /> : <Navigate to='/' replace />}
         />
       </Routes>
     </div>

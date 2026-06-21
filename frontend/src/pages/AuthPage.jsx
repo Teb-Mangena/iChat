@@ -1,7 +1,14 @@
+import { Show, SignInButton } from "@clerk/react"
 
 function AuthPage() {
   return (
-    <div>AuthPage</div>
+    <div>
+      <div>AuthPage</div>
+
+      <Show when="signed-out">
+        <SignInButton mode='modal' />
+      </Show>
+    </div>
   )
 }
 
