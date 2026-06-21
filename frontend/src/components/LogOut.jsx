@@ -1,21 +1,19 @@
-import { useAuth } from '@clerk/react';
-import { LogOut as LogOutIcon } from "lucide-react"
 
-function LogOut() {
-  const { signOut } = useAuth()
+import { Button } from "@heroui/react";
+import { LogOut } from "lucide-react";
+import { useClerk } from "@clerk/react";
 
-  const handleSignOut = () => {
-    const confirmed = window.confirm("Are you sure you want to log out?")
-
-    if (confirmed) signOut();
-  }
-
+export default function LogOutButton() {
+  const { signOut } = useClerk();
   return (
-    <button onClick={handleSignOut} className='border border-red-500 rounded-2xl p-3 px-5 flex gap-2 text-red-500 hover:bg-red-500 hover:text-white hover:cursor-pointer'>
-      <LogOutIcon />
-      <p>Log out</p>
-    </button>
-  )
+    <Button
+      isIconOnly
+      variant="light"
+      color="danger"
+      onPress={() => signOut()}
+      aria-label="Log out"
+    >
+      <LogOut className="h-5 w-5" />
+    </Button>
+  );
 }
-
-export default LogOut
