@@ -13,7 +13,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-violet-50 via-white to-purple-100 px-4 dark:from-gray-950 dark:via-gray-900 dark:to-violet-950">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-linear-to-br from-violet-50 via-white to-purple-100 px-4 dark:from-gray-950 dark:via-gray-900 dark:to-violet-950">
       {/* Decorative background blur circles */}
       <div className="absolute -top-40 left-10 h-72 w-72 rounded-full bg-purple-300/30 blur-3xl dark:bg-purple-800/20" />
       <div className="absolute -bottom-32 right-10 h-72 w-72 rounded-full bg-indigo-300/30 blur-3xl dark:bg-indigo-800/20" />
@@ -40,7 +40,7 @@ export default function AuthPage() {
         {/* CTA Button */}
         <Button
           onClick={handleClerk}
-          className="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 dark:from-purple-600 dark:to-indigo-600 dark:hover:from-purple-700 dark:hover:to-indigo-700"
+          className="w-full bg-linear-to-r from-purple-500 to-indigo-500 text-white shadow-lg hover:from-purple-600 hover:to-indigo-600 dark:from-purple-600 dark:to-indigo-600 dark:hover:from-purple-700 dark:hover:to-indigo-700"
           size="lg"
           endContent={<Sparkles className="h-4 w-4" />}
         >
