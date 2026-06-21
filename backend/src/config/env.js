@@ -9,6 +9,7 @@ export const ENV = {
   CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
   CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
   CLERK_WEBHOOK_SIGNING_SECRET: process.env.CLERK_WEBHOOK_SIGNING_SECRET,
+  IMAGEKIT_PRIVATE_KEY: process.env.IMAGEKIT_PRIVATE_KEY,
 };
 
 const requiredKeys = [
@@ -18,6 +19,7 @@ const requiredKeys = [
   "CLERK_SECRET_KEY",
   "CLERK_PUBLISHABLE_KEY",
   "CLERK_WEBHOOK_SIGNING_SECRET",
+  "IMAGEKIT_PRIVATE_KEY",
 ];
 
 for (const key of requiredKeys) {
