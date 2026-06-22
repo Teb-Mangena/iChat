@@ -2,6 +2,7 @@ import express from "express";
 import User from "../models/user.model.js";
 import { verifyWebhook } from "@clerk/backend/webhooks";
 import { ENV } from "../config/env.js";
+import { redis } from "../lib/redis.js";
 
 const router = express.Router();
 
@@ -54,6 +55,7 @@ router.post("/", async (req, res) => {
       if (evt.data.id) await User.findOneAndDelete({ clerkId: evt.data.id });
     }
 
+    await redis.del("contact_users");
     res.status(200).json({ received: true });
   } catch (error) {
     console.error("Error in Clerk webhook:", error);

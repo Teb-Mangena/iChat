@@ -1,4 +1,5 @@
 import { hasImageKitConfig, uploadChatMedia } from "../lib/imagekit.js";
+import { redis } from "../lib/redis.js";
 import { getReceiverSocketId, io } from "../lib/socket.js";
 import Message from "../models/message.model.js";
 import User from "../models/user.model.js";
@@ -6,10 +7,22 @@ import User from "../models/user.model.js";
 export async function getUserContacts(req, res) {
   try {
     const loggedInUser = req.user._id;
+    let cachedUsers = await redis.get("contact_users");
+
+    if (cachedUsers) {
+      return res.status(200).json(JSON.parse(cachedUsers));
+    }
 
     const filteredUsers = await User.find({
       _id: { $ne: loggedInUser },
     }).select("-clerkId");
+
+    cachedUsers = await redis.set(
+      "contact_users",
+      JSON.stringify(filteredUsers),
+      "EX",
+      3600,
+    );
 
     res.status(200).json(filteredUsers);
   } catch (error) {
