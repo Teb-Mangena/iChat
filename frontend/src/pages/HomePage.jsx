@@ -1,15 +1,14 @@
 import Navbar from '../components/Navbar';
-import { useAuthStore } from '../store/useAuthStore'
+import UserContacts from '../components/chat/UserContacts';
 
 function HomePage() {
-  const { onlineUsers } = useAuthStore();
-
-  console.log(onlineUsers)
-
   return (
     <div>
       <Navbar />
-      <div>HomePage</div>
+
+      <div>
+        <UserContacts />
+      </div>
     </div>
   )
 }
